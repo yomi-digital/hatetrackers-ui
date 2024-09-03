@@ -1,0 +1,63 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      screens: {
+        "2xs": "290px",
+        xs: "350px",
+        "3xl": "2000px",
+      },
+      maxWidth: {
+        "8xl": "90rem",
+        "9xl": "100rem",
+        "10xl": "110rem",
+        "11xl": "120rem",
+      },
+      height: {
+        navbar: ["80px"],
+        "navbar-desktop": ["10vh"],
+        "screen-no-navbar": ["calc(100vh - 80px)"],
+        "screen-no-navbar-desktop": ["calc(100vh - 10vh)"],
+        "adaptive-screen": ["100vh"],
+      },
+      colors: {
+        black: "#000",
+        "black-100": "#202024",
+        "black-200": "#2E2E35",
+        "black-300": "#48484C",
+        "black-400": "#8D8D99",
+        "black-800": "#D9DEDD",
+        white: "#FFF",
+        primary: "#F90000",
+        "primary-100": "#6136ce",
+        "primary-200": "#8B63EB",
+        "primary-300": "#B19DE3",
+        "primary-700": "#BA9CFF",
+        "primary-800": "#CECEFA",
+        "primary-900": "#EDEEFD",
+        "primary-opacity": "#505FF91A",
+        secondary: "#FECD02",
+        "secondary-800": "#FEFCCB",
+        "secondary-dark": "#e4b701",
+        "secondary-opacity": "#FEF40233",
+        tertiary: "#505FF9",
+        "tertiary-dark": "#2233f7",
+        quaternary: "#505FF9",
+        body: "#424242",
+        blue: "#2F367B",
+        "blue-light": "#767FCB",
+        pink: "#FF4681",
+        "pink-dark": "#CC3968",
+        yellow: "#FBECAC",
+      },
+      fontFamily: {
+        raleway: ["Raleway", "sans-serif"],
+      },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+      },
+    },
+  },
+  plugins: [],
+};
