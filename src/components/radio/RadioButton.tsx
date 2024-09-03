@@ -17,14 +17,14 @@ function RadioButton({ label, value, checked, onChange }: RadioButtonProps) {
           onChange={() => onChange(value)}
         />
         <div
-          className={`w-4 h-4 border-2 border-black-300 rounded-full ${
-            checked ? "bg-white" : "bg-black-200"
+          className={`w-4 h-4 border-2 border-black-400 rounded-full ${
+            checked ? "bg-white" : "bg-black-300"
           }`}
         />
       </div>
       <span
         className={`ml-2 text-lg font-semibold ${
-          checked ? "text-white" : "text-black-400"
+          checked ? "text-white" : "text-black-500"
         }`}
       >
         {label}

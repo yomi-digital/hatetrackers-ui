@@ -20,7 +20,7 @@ function MyPanel({
     >
       <div>
         <span className="text-black text-sm">{headerText}</span>
-        <div className="h-px mt-3 bg-black-200" />
+        <div className="h-px mt-3 bg-black-300" />
       </div>
       {children}
     </MyPanelBase>
@@ -30,7 +30,7 @@ function MyPanel({
     //   >
     //     <div className="px-20">
     //       <span className="text-black text-sm">{headerText}</span>
-    //       <div className="h-px mt-3 bg-black-200" />
+    //       <div className="h-px mt-3 bg-black-300" />
     //     </div>
     //     {children}
     //   </div>

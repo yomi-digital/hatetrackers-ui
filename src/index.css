@@ -52,8 +52,8 @@ body {
     @apply hover:underline;
   } */
 
-  input:not([type="submit"]) {
-    @apply 3xl:text-lg bg-black-200 disabled:opacity-25 disabled:cursor-not-allowed rounded-md px-4 py-3 text-white placeholder-black-300;
+  input:not([type="submit"]):not([type="file"]) {
+    @apply 3xl:text-lg bg-black-300 disabled:opacity-25 disabled:cursor-not-allowed rounded-md px-4 py-3 text-white placeholder-black-400;
   }
 
   /* buttons */
@@ -76,7 +76,7 @@ body {
     @apply text-primary bg-transparent hover:enabled:bg-primary-100 active:enabled:bg-primary-100/80 hover:enabled:text-white
   }
   .my-button-secondary-solid {
-    @apply font-bold text-white bg-black-200 hover:enabled:bg-white hover:enabled:text-black-200 active:enabled:bg-white/80
+    @apply font-bold text-white bg-black-300 hover:enabled:bg-white hover:enabled:text-black-300 active:enabled:bg-white/80
   }
   .my-button-secondary-outline {
     @apply text-secondary font-semibold bg-transparent border-[1.5px] border-secondary hover:enabled:border-secondary-dark active:enabled:border-secondary-dark/80 hover:enabled:text-secondary-dark active:enabled:text-secondary-dark/80

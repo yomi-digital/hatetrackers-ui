@@ -1,12 +1,39 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import RadialRedImg from "../../../assets/images/pictures/radial_gradient_red.svg";
 import RadialWhiteImg from "../../../assets/images/pictures/radial_gradient_white.svg";
 import Modal from "../../../components/Modal";
 import MyButton from "../../../components/MyButton";
+import QueryWrapper from "../../../components/QueryWrapper";
+import { LeaderboardResponse } from "../../../models/API/leaderboard";
 import UploadCard from "../components/UploadCard";
 
 function ListSection() {
   const [selectedChip, setSelectedChip] = useState("all");
+
+  const renderLeaderboard = useCallback(
+    (data: LeaderboardResponse) => {
+      if (!data || data?.leaderboard?.length < 1) return null;
+      const leaderboardEntriesHtml = data?.leaderboard
+        ?.sort((a, b) => {
+          if (selectedChip === "top") return b.upvotes - a.upvotes;
+          return b.timestamp - a.timestamp;
+        })
+        .map((leaderboardEntry, index) => (
+          <UploadCard
+            key={leaderboardEntry._id}
+            author={leaderboardEntry.user}
+            date={new Date(leaderboardEntry.timestamp).toLocaleDateString()}
+            upvotes={leaderboardEntry.upvotes}
+            link={leaderboardEntry.link}
+            img={leaderboardEntry.screenshot}
+            className={index < data.leaderboard.length - 1 ? "mb-5" : ""}
+          />
+        ));
+
+      return <>{leaderboardEntriesHtml}</>;
+    },
+    [selectedChip]
+  );
 
   return (
     <div className="relative w-full overflow-hidden">
@@ -28,36 +55,12 @@ function ListSection() {
           </MyButton>
         </div>
         <Modal>
-          <UploadCard
-            author="Livio Lombardo"
-            date="01/08/24"
-            upvotes={25}
-            link="https://youtu.be/1hrTfJiqDdU"
-            img="https://picsum.photos/400/200"
-            className="mb-5"
-          />
-          <UploadCard
-            author="Livio Lombardo"
-            date="01/08/24"
-            upvotes={25}
-            link="https://youtu.be/1hrTfJiqDdU"
-            img="https://picsum.photos/400/200"
-            className="mb-5"
-          />
-          <UploadCard
-            author="Livio Lombardo"
-            date="01/08/24"
-            upvotes={25}
-            link="https://youtu.be/1hrTfJiqDdU"
-            img="https://picsum.photos/400/200"
-            className="mb-5"
-          />
-          <UploadCard
-            author="Livio Lombardo"
-            date="01/08/24"
-            upvotes={25}
-            link="https://youtu.be/1hrTfJiqDdU"
-            img="https://picsum.photos/400/200"
+          <QueryWrapper<LeaderboardResponse>
+            endpoint={import.meta.env.VITE_API_URI + "/leaderboard"}
+            queryKey="leaderboard"
+            render={renderLeaderboard}
+            errorLabel="Error while fetching leaderboard"
+            loadingLabel="Loading leaderboard..."
           />
         </Modal>
       </div>

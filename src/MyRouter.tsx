@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Create from "./pages/create/Create";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Landing from "./pages/landing/Landing";
 import RequestNFT from "./pages/requestNFT/RequestNFT";
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/create",
-    element: <Dashboard />,
+    element: <Create />,
   },
 ]);
 

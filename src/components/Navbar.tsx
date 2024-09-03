@@ -41,9 +41,7 @@ function Navbar({
         <div className="flex">
           {showCreateButton && (
             <Link to="/create">
-              <MyButton className="block mr-4" onClick={open}>
-                New entry
-              </MyButton>
+              <MyButton className="block mr-4">New entry</MyButton>
             </Link>
           )}
           {isConnected && (

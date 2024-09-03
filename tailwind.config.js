@@ -24,9 +24,10 @@ export default {
       colors: {
         black: "#000",
         "black-100": "#202024",
-        "black-200": "#2E2E35",
-        "black-300": "#48484C",
-        "black-400": "#8D8D99",
+        "black-200": "#29292E",
+        "black-300": "#2E2E35",
+        "black-400": "#48484C",
+        "black-500": "#8D8D99",
         "black-800": "#D9DEDD",
         white: "#FFF",
         primary: "#F90000",
