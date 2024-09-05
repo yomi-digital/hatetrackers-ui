@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAccount } from "wagmi";
 import LogoLongImg from "../assets/images/logo_long.svg";
-import MyButton from "./MyButton";
+import MyButton from "./buttons/MyButton";
 
 interface NavbarProps {
   showCreateButton?: boolean;

@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
 import RadialRedImg from "../../../assets/images/pictures/radial_gradient_red.svg";
 import RadialWhiteImg from "../../../assets/images/pictures/radial_gradient_white.svg";
-import Modal from "../../../components/Modal";
-import MyButton from "../../../components/MyButton";
+import MyButton from "../../../components/buttons/MyButton";
+import Modal from "../../../components/modals/Modal";
 import QueryWrapper from "../../../components/QueryWrapper";
 import { LeaderboardResponse } from "../../../models/API/leaderboard";
 import UploadCard from "../components/UploadCard";
@@ -21,6 +21,7 @@ function ListSection() {
         .map((leaderboardEntry, index) => (
           <UploadCard
             key={leaderboardEntry._id}
+            id={leaderboardEntry._id}
             author={leaderboardEntry.user}
             date={new Date(leaderboardEntry.timestamp).toLocaleDateString()}
             upvotes={leaderboardEntry.upvotes}

@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+import MyLoader from "../MyLoader";
 
 interface MyButtonProps {
   onClick?: () => void;
@@ -7,6 +8,7 @@ interface MyButtonProps {
   buttonStyle?: "primary" | "secondary" | "tertiary";
   buttonFilling?: "solid" | "outline" | "clear";
   size?: "small" | "medium";
+  loading?: boolean;
 }
 
 function MyButton({
@@ -14,6 +16,7 @@ function MyButton({
   className,
   children,
   disabled,
+  loading,
   buttonStyle = "primary",
   buttonFilling = "solid",
   size = "medium",
@@ -24,9 +27,9 @@ function MyButton({
     <button
       disabled={disabled}
       className={`my-button ${size} ${btnStyle} ${className ? className : ""}`}
-      onClick={() => onClick && onClick()}
+      onClick={() => onClick && !loading && onClick()}
     >
-      {children}
+      {loading ? <MyLoader size={24} /> : children}
     </button>
   );
 }

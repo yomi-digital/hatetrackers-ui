@@ -21,7 +21,7 @@ const MySelectField: React.FC<MySelectFieldProps> = ({
   return (
     <div className={`my-select-field-container ${className}`}>
       {label && (
-        <label className="block text-xs font-bold text-black-500 mb-2 pl-2">
+        <label className="block text-xs font-bold text-black-600 mb-2 pl-2">
           {label}
           {required && <span className="text-red-500">*</span>}
         </label>
@@ -37,12 +37,12 @@ const MySelectField: React.FC<MySelectFieldProps> = ({
         onChange={(selectedOption) => onChange(selectedOption?.value || "")}
         classNames={{
           control: () =>
-            `bg-black-300 border-black-400 rounded-md px-4 py-3 text-white`,
-          placeholder: () => `text-black-400`,
-          dropdownIndicator: () => `text-black-400`,
-          menu: () => `bg-black-300 mt-2 rounded-md`,
+            `bg-black-400 border-black-500 rounded-md px-4 py-3 text-white`,
+          placeholder: () => `text-black-500`,
+          dropdownIndicator: () => `text-black-500`,
+          menu: () => `bg-black-400 mt-2 rounded-md`,
           option: (state) =>
-            `${state.isSelected ? "bg-black-400" : ""} px-4 py-3`,
+            `${state.isSelected ? "bg-black-500" : ""} px-4 py-3`,
         }}
       />
     </div>

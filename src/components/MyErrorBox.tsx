@@ -1,4 +1,4 @@
-import MyButton from "./MyButton";
+import MyButton from "./buttons/MyButton";
 
 interface MyErrorBoxProps {
   label: string;

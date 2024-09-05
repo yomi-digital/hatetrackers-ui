@@ -6,7 +6,7 @@ import HeartImg from "../assets/images/icons/heart.svg";
 // import TwitterImg from "../assets/images/icons/Twitter.svg";
 import LogoLongImg from "../assets/images/logo_long.png";
 import { useBreakpoint } from "../hooks/UseBreakpoint";
-import MyButton from "./MyButton";
+import MyButton from "./buttons/MyButton";
 
 interface FooterProps {
   className?: string;

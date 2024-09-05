@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import PictureImg from "../assets/images/icons/img.svg";
+import PictureImg from "../../assets/images/icons/img.svg";
 interface MyFileFieldProps {
   className?: string;
   inputClassName?: string;
@@ -10,7 +10,8 @@ interface MyFileFieldProps {
   label?: string;
   error?: string;
   id?: string;
-  onChange: (value: File) => void;
+  onChange?: (value: File) => void;
+  onIconClick?: () => void;
 }
 
 function MyFileField({
@@ -24,11 +25,12 @@ function MyFileField({
   error,
   id,
   onChange,
+  onIconClick,
 }: PropsWithChildren<MyFileFieldProps>) {
   return (
     <div className={`${className}`}>
       <label htmlFor={id}>
-        <div className="block text-xs font-bold text-black-500 mb-2 pl-2">
+        <div className="block text-xs font-bold text-black-600 mb-2 pl-2">
           {label && label}
           {required && <span className="text-red-500">*</span>}
           {error && error.length > 0 && (
@@ -40,7 +42,7 @@ function MyFileField({
         <div
           className={`${
             inputClassName ? inputClassName : ""
-          } w-full flex justify-between 3xl:text-lg bg-black-300 disabled:opacity-25 disabled:cursor-not-allowed rounded-md px-4 py-3 text-black-400`}
+          } w-full flex justify-between 3xl:text-lg bg-black-400 disabled:opacity-25 disabled:cursor-not-allowed rounded-md px-4 py-3 text-black-500`}
         >
           {value ? (
             <span className="text-white">{value.name}</span>
@@ -48,7 +50,13 @@ function MyFileField({
             <span>{placeholder}</span>
           )}
 
-          <img src={PictureImg} />
+          <img
+            className={`${onIconClick ? "cursor-pointer" : ""}`}
+            src={PictureImg}
+            onClick={() => {
+              if (onIconClick) onIconClick();
+            }}
+          />
         </div>
       </label>
       <input
@@ -58,7 +66,7 @@ function MyFileField({
         className="hidden"
         onChange={(e) => {
           console.log(e.target.files);
-          if (e.target.files && e.target.files.length > 0) {
+          if (onChange && e.target.files && e.target.files.length > 0) {
             onChange(e.target.files[0]);
           }
         }}

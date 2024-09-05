@@ -25,16 +25,16 @@ body {
     @apply text-3xl lg:text-4xl text-white font-bold;
   }
   h2:not(.secondary) {
-    @apply text-2xl xs:text-3xl sm:text-4xl lg:text-5xl;
+    @apply text-2xl text-center;
   }
   h2.secondary {
-    @apply text-2xl xs:text-3xl sm:text-4xl lg:text-5xl text-white font-medium;
+    @apply text-2xl text-white font-medium;
   }
   p {
     @apply text-white font-semibold;
   }
   .red-line {
-    @apply relative after:content-[''] after:bg-primary after:h-1 after:absolute after:bottom-1/2 after:-left-1 after:-right-1 ;
+    @apply relative after:content-[''] after:bg-primary after:h-1 after:absolute after:bottom-1/2 after:-left-1 after:-right-1;
   }
 
   .section {
@@ -42,7 +42,7 @@ body {
   }
 
   .section-bg {
-   @apply bg-no-repeat bg-cover bg-left-top;
+    @apply bg-no-repeat bg-cover bg-left-top;
   }
 
   .hero-second-section {
@@ -53,70 +53,71 @@ body {
   } */
 
   input:not([type="submit"]):not([type="file"]) {
-    @apply 3xl:text-lg bg-black-300 disabled:opacity-25 disabled:cursor-not-allowed rounded-md px-4 py-3 text-white placeholder-black-400;
+    @apply 3xl:text-lg bg-black-400 disabled:opacity-25 disabled:cursor-not-allowed rounded-md px-4 py-3 text-white placeholder-black-500;
   }
 
   /* buttons */
   .my-button {
-    @apply transition-colors disabled:opacity-25 disabled:cursor-not-allowed rounded-full px-6 py-3
+    @apply transition-colors disabled:opacity-25 disabled:cursor-not-allowed rounded-full px-6 py-3;
   }
   .my-button.medium {
-    @apply text-base 3xl:text-lg
+    @apply text-base 3xl:text-lg;
   }
   .my-button.small {
-    @apply text-sm 3xl:text-base
+    @apply text-sm 3xl:text-base;
   }
   .my-button-primary-solid {
-    @apply font-bold text-white bg-primary hover:enabled:bg-white hover:enabled:text-primary active:enabled:bg-white/80
+    @apply font-bold text-white bg-primary hover:enabled:bg-white hover:enabled:text-primary active:enabled:bg-white/80;
   }
   .my-button-primary-outline {
-    @apply text-primary font-semibold bg-transparent border-[1.5px] border-primary hover:enabled:border-primary-100 active:enabled:border-primary-100/80 hover:enabled:text-primary-100 active:enabled:text-primary-100/80
+    @apply text-primary font-semibold bg-transparent border-[1.5px] border-primary hover:enabled:border-primary-100 active:enabled:border-primary-100/80 hover:enabled:text-primary-100 active:enabled:text-primary-100/80;
   }
   .my-button-primary-clear {
-    @apply text-primary bg-transparent hover:enabled:bg-primary-100 active:enabled:bg-primary-100/80 hover:enabled:text-white
+    @apply text-primary bg-transparent hover:enabled:bg-primary-100 active:enabled:bg-primary-100/80 hover:enabled:text-white;
   }
   .my-button-secondary-solid {
-    @apply font-bold text-white bg-black-300 hover:enabled:bg-white hover:enabled:text-black-300 active:enabled:bg-white/80
+    @apply font-bold text-white bg-black-400 hover:enabled:bg-white hover:enabled:text-black-400 active:enabled:bg-white/80;
   }
   .my-button-secondary-outline {
-    @apply text-secondary font-semibold bg-transparent border-[1.5px] border-secondary hover:enabled:border-secondary-dark active:enabled:border-secondary-dark/80 hover:enabled:text-secondary-dark active:enabled:text-secondary-dark/80
+    @apply text-secondary font-semibold bg-transparent border-[1.5px] border-secondary hover:enabled:border-secondary-dark active:enabled:border-secondary-dark/80 hover:enabled:text-secondary-dark active:enabled:text-secondary-dark/80;
   }
   .my-button-secondary-clear {
-    @apply text-secondary bg-transparent hover:enabled:bg-secondary-dark active:enabled:bg-secondary-dark/80 hover:enabled:text-black
+    @apply text-secondary bg-transparent hover:enabled:bg-secondary-dark active:enabled:bg-secondary-dark/80 hover:enabled:text-black;
   }
   .my-button-tertiary-solid {
-    @apply text-white font-semibold bg-tertiary hover:enabled:bg-tertiary-dark active:enabled:bg-tertiary-dark/80
+    @apply text-white font-semibold bg-black-100 hover:enabled:bg-white hover:enabled:text-black-100 active:enabled:bg-white/80;
   }
   .my-button-tertiary-outline {
-    @apply text-tertiary font-semibold bg-transparent border-[1.5px] border-tertiary hover:enabled:border-tertiary-dark active:enabled:border-tertiary-dark/80 hover:enabled:text-tertiary-dark active:enabled:text-tertiary-dark/80
+    @apply text-tertiary font-semibold bg-transparent border-[1.5px] border-tertiary hover:enabled:border-tertiary-dark active:enabled:border-tertiary-dark/80 hover:enabled:text-tertiary-dark active:enabled:text-tertiary-dark/80;
   }
   .my-button-tertiary-clear {
-    @apply text-tertiary bg-transparent hover:enabled:bg-tertiary-dark active:enabled:bg-tertiary-dark/80 hover:enabled:text-white
+    @apply text-tertiary bg-transparent hover:enabled:bg-tertiary-dark active:enabled:bg-tertiary-dark/80 hover:enabled:text-white;
   }
 
   /* footer */
-.footer-li {
-  @apply text-black font-medium text-sm;
-}
-.footer-li:not(:first-child) {
-  @apply mt-2;
-}
+  .footer-li {
+    @apply text-black font-medium text-sm;
+  }
+  .footer-li:not(:first-child) {
+    @apply mt-2;
+  }
 
   /* navbar */
   .active {
     @apply text-primary font-extrabold;
   }
-  .navbar-entry, .navbar-entry-mobile {
+  .navbar-entry,
+  .navbar-entry-mobile {
     @apply transition-all font-semibold;
   }
   .navbar-entry-mobile {
     @apply block;
   }
   .navbar-entry:not(.active):hover {
-    @apply text-secondary-dark
+    @apply text-secondary-dark;
   }
   .navbar-entry-mobile:not(.active):hover {
-    @apply text-secondary-dark
+    @apply text-secondary-dark;
   }
 
   /* custom scrollbar */
@@ -134,7 +135,7 @@ body {
 
   /* Handle */
   .alt-scrollbar::-webkit-scrollbar-thumb {
-    background: #2F367B;
+    background: #2f367b;
     border-radius: 5px;
   }
 
@@ -161,10 +162,10 @@ body {
     @apply max-sm:w-3 top-1/2;
   }
 
-  .slider-dots li.slick-active button:before{
+  .slider-dots li.slick-active button:before {
     @apply text-primary opacity-100;
   }
-  .slider-dots li:not(.slick-active) button:before{
+  .slider-dots li:not(.slick-active) button:before {
     @apply text-primary-200 opacity-80;
   }
 
@@ -183,7 +184,7 @@ body {
     border-radius: 1000px;
     transition: all 0.3s ease;
     left: calc(50% - 4px);
-    @apply bg-primary
+    @apply bg-primary;
   }
 
   .bar:nth-child(1) {

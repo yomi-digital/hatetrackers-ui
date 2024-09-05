@@ -1,18 +1,20 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import RadialRedImg from "../../../assets/images/pictures/radial_gradient_red.svg";
 import RadialWhiteImg from "../../../assets/images/pictures/radial_gradient_white.svg";
-import Modal from "../../../components/Modal";
-import MyButton from "../../../components/MyButton";
-import MyFileField from "../../../components/MyFileField";
-import MyInputField from "../../../components/MyInputField";
+import MyButton from "../../../components/buttons/MyButton";
+import MyFileField from "../../../components/input/MyFileField";
+import MyInputField from "../../../components/input/MyInputField";
+import ImageUploadModal from "../../../components/modals/ImageUploadModal";
+import Modal from "../../../components/modals/Modal";
+import Overlay from "../../../components/Overlay";
 
 const schema = yup
   .object({
     link: yup.string().required(),
     img: yup.mixed().required(),
-    hashtag: yup.string().required(),
   })
   .required();
 
@@ -21,10 +23,10 @@ function NewEntrySection() {
     defaultValues: {
       link: "",
       img: undefined,
-      hashtag: "",
     },
     resolver: yupResolver(schema),
   });
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
 
   const onSubmit: SubmitHandler<{
     link: string;
@@ -67,44 +69,14 @@ function NewEntrySection() {
             control={control}
             defaultValue={""}
           />
-          <Controller
-            render={({ field }) => {
-              // eslint-disable-next-line @typescript-eslint/no-unused-vars
-              const { ref, ...rest } = field;
-
-              return (
-                <MyFileField
-                  label="IMG"
-                  id="screenshot"
-                  placeholder="Upload a photo of your video"
-                  className="w-full mt-6"
-                  required
-                  {...rest}
-                />
-              );
+          <MyFileField
+            label="IMG"
+            placeholder="Upload a photo of your video"
+            className="w-full mt-6"
+            onIconClick={() => {
+              setIsUploadModalOpen(true);
             }}
-            name="link"
-            control={control}
-            defaultValue={undefined}
-          />
-          <Controller
-            render={({ field }) => {
-              // eslint-disable-next-line @typescript-eslint/no-unused-vars
-              const { ref, ...rest } = field;
-
-              return (
-                <MyInputField
-                  label="#"
-                  placeholder="#hashtag"
-                  className="w-full mt-6"
-                  required
-                  {...rest}
-                />
-              );
-            }}
-            name="hashtag"
-            control={control}
-            defaultValue={""}
+            required
           />
 
           <div className="mt-8">
@@ -112,6 +84,18 @@ function NewEntrySection() {
           </div>
         </form>
       </Modal>
+      {isUploadModalOpen && (
+        <Overlay>
+          <ImageUploadModal
+            onCancelClick={() => {
+              setIsUploadModalOpen(false);
+            }}
+            onCloseClick={() => {
+              setIsUploadModalOpen(false);
+            }}
+          />
+        </Overlay>
+      )}
       <img
         className="-z-10 absolute -bottom-3/4 -right-3/4 w-[70rem] max-w-[70rem] h-[70rem] max-h-[70rem] object-contain scale-150"
         src={RadialRedImg}

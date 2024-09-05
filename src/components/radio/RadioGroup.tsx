@@ -27,7 +27,7 @@ function RadioGroup({
   return (
     <div>
       {label && (
-        <label className="block text-xs font-bold text-black-500 mb-2 pl-2">
+        <label className="block text-xs font-bold text-black-600 mb-2 pl-2">
           {label}
           {required && <span className="text-red-500">*</span>}
         </label>

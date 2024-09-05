@@ -28,7 +28,7 @@ function MyInputField({
       <div className="flex">
         {label && (
           <label
-            className="block text-xs font-bold text-black-500 mb-2 pl-2"
+            className="block text-xs font-bold text-black-600 mb-2 pl-2"
             htmlFor={id}
           >
             {label}
