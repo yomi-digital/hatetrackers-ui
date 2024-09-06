@@ -80,7 +80,10 @@ function UploadCard({
           {link}
         </Link>
         <div className="w-full h-40 flex items-center">
-          <img src={img} className="w-full object-contain rounded-[5px] mt-2" />
+          <img
+            src={img}
+            className="w-full h-full object-contain rounded-[5px] mt-4"
+          />
         </div>
         <button
           onClick={() => {

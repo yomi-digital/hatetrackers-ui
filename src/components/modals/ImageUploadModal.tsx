@@ -3,7 +3,7 @@ import { PropsWithChildren, useCallback, useMemo, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { useAccount, useSignMessage } from "wagmi";
 import UploadImg from "../../assets/images/icons/upload.svg";
-import { UploadResponse } from "../../models/API/upload";
+import { UploadResponse } from "../../models/API/upvote";
 import MyButton from "../buttons/MyButton";
 import FileCard from "../FileCard";
 import MyLoader from "../MyLoader";
@@ -26,6 +26,7 @@ function ImageUploadModal({
   className,
   onCancelClick,
   onCloseClick,
+  onUploadSuccess,
 }: PropsWithChildren<ImageUploadModalProps>) {
   const [selectedFile, setSelectedFile] = useState<File>();
   const [uploadStatus, setUploadStatus] = useState<
@@ -74,6 +75,12 @@ function ImageUploadModal({
       console.log(res);
       if (!res.data.error) {
         setUploadStatus("done");
+        if (onUploadSuccess) {
+          onUploadSuccess({
+            original: selectedFile,
+            uploaded: res.data.image,
+          });
+        }
       } else {
         console.error(res.data.message);
         setUploadStatus("error");
@@ -82,7 +89,7 @@ function ImageUploadModal({
       console.error(err);
       setUploadStatus("error");
     }
-  }, [selectedFile, signMessageAsync, address]);
+  }, [selectedFile, signMessageAsync, address, onUploadSuccess]);
 
   const renderModalContent = useMemo(() => {
     if (!selectedFile) {
