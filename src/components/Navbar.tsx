@@ -1,5 +1,5 @@
 import { useWeb3Modal } from "@web3modal/wagmi/react";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useAccount } from "wagmi";
 import LogoLongImg from "../assets/images/logo_long.svg";
@@ -14,9 +14,9 @@ interface NavbarProps {
 function Navbar({
   showCreateButton = false,
   className,
-  listClassName,
-}: NavbarProps) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+}: // listClassName,
+NavbarProps) {
+  // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { address, isConnected } = useAccount();
   const { open } = useWeb3Modal();
 

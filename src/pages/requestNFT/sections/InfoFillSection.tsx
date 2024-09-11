@@ -36,11 +36,7 @@ const schema = yup
   .required();
 
 function InfoFillSection() {
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm({
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       email: "",
       name: "",
@@ -54,7 +50,7 @@ function InfoFillSection() {
 
   const { address } = useAccount();
   const [submitData, setSubmitData] = useState<SubmitData>();
-  const { isSuccess, isError, isPending, data, refetch, isRefetching } =
+  const { isSuccess, isError, isPending, data, isRefetching } =
     useQuery<RegisterUserResponse>({
       queryKey: ["new-user"],
       queryFn: () =>
