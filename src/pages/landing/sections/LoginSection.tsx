@@ -89,7 +89,6 @@ function LoginSection() {
             Connect Wallet
           </MyButton>
         )} */}
-        {JSON.stringify(data)}
       </div>
       <img
         className="-z-10 absolute -bottom-1/3 -right-1/3 w-[70rem] max-w-[70rem] h-[70rem] max-h-[70rem] object-contain scale-150"

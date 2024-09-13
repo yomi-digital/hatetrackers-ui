@@ -27,9 +27,9 @@ function UploadCard({
   className = "",
 }: UploadCardProps) {
   const { address } = useAccount();
-  const [upvoteStatus, setUpvoteStatus] = useState<
-    "idle" | "loading" | "done" | "error"
-  >("idle");
+  const [, setUpvoteStatus] = useState<"idle" | "loading" | "done" | "error">(
+    "idle"
+  );
   const [upvoteOverwrite, setUpvoteOverwrite] = useState<boolean>();
   const { signMessageAsync } = useSignMessage();
 
