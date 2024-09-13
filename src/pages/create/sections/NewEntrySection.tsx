@@ -165,11 +165,12 @@ function NewEntrySection() {
     uploadedFileOriginal,
     imgHash,
     setIsUploadModalOpen,
+    onSubmit,
   ]);
 
   return (
     <div className="relative h-screen-no-navbar-desktop w-full flex justify-center items-center overflow-hidden">
-      <Modal className="!w-4/5">
+      <Modal className="section !w-4/5">
         <h1>
           <span className="red-line">CREATE</span> A NEW ENTRY
         </h1>
@@ -181,6 +182,7 @@ function NewEntrySection() {
       {isUploadModalOpen && (
         <Overlay>
           <ImageUploadModal
+            className="section !w-4/5"
             onCancelClick={() => {
               setIsUploadModalOpen(false);
             }}

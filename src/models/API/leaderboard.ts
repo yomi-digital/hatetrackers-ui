@@ -9,4 +9,5 @@ export interface LeaderboardEntry {
   timestamp: number;
   user: string;
   upvotes: number;
+  upvoted?: boolean;
 }

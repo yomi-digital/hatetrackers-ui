@@ -39,7 +39,7 @@ function LoginSection() {
         navigate("/new-user");
       }
     }
-  }, [isSuccess]);
+  }, [isSuccess, data, navigate]);
 
   const renderHtml = useMemo(() => {
     if (!address) {

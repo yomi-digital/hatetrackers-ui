@@ -12,6 +12,7 @@ interface UploadCardProps {
   link: string;
   img: string;
   upvotes: number;
+  upvoted?: boolean;
   className?: string;
 }
 
@@ -22,12 +23,14 @@ function UploadCard({
   link,
   img,
   upvotes,
+  upvoted,
   className = "",
 }: UploadCardProps) {
   const { address } = useAccount();
   const [upvoteStatus, setUpvoteStatus] = useState<
     "idle" | "loading" | "done" | "error"
   >("idle");
+  const [upvoteOverwrite, setUpvoteOverwrite] = useState<boolean>();
   const { signMessageAsync } = useSignMessage();
 
   const sendUpvote = useCallback(
@@ -49,6 +52,10 @@ function UploadCard({
         console.log(res);
         if (!res.data.error) {
           setUpvoteStatus("done");
+          setUpvoteOverwrite(true);
+        } else if (res.data.message === "Downvoted correctly") {
+          setUpvoteStatus("done");
+          setUpvoteOverwrite(false);
         } else {
           console.error(res.data.message);
           setUpvoteStatus("error");
@@ -64,6 +71,16 @@ function UploadCard({
   const trimmedAuthor = useMemo(() => {
     return `${author.slice(0, 4)}...${author.slice(-5)}`;
   }, [author]);
+
+  const upvotesDirtyCount = useMemo(() => {
+    if (upvoteOverwrite !== undefined) {
+      if (upvoteOverwrite !== upvoted) {
+        return upvotes + (upvoteOverwrite ? 1 : -1);
+      }
+    }
+
+    return upvotes;
+  }, [upvotes, upvoteOverwrite, upvoted]);
 
   return (
     <div className={`bg-black-400 rounded-[9px] ${className}`}>
@@ -89,10 +106,14 @@ function UploadCard({
           onClick={() => {
             sendUpvote(id);
           }}
-          className={`mt-10 ${upvoteStatus === "done" ? "text-primary" : ""}`}
+          className={`mt-10 ${
+            (upvoteOverwrite !== undefined ? upvoteOverwrite : upvoted)
+              ? "text-primary"
+              : ""
+          }`}
         >
           <Upvote className="w-4 h-4 inline mr-1" />
-          <span>{upvotes + (upvoteStatus === "done" ? 1 : 0)}</span>
+          <span>{upvotesDirtyCount}</span>
         </button>
       </div>
     </div>

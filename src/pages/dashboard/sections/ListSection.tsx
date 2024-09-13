@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { useAccount } from "wagmi";
 import RadialRedImg from "../../../assets/images/pictures/radial_gradient_red.svg";
 import RadialWhiteImg from "../../../assets/images/pictures/radial_gradient_white.svg";
 import MyButton from "../../../components/buttons/MyButton";
@@ -9,6 +10,7 @@ import UploadCard from "../components/UploadCard";
 
 function ListSection() {
   const [selectedChip, setSelectedChip] = useState("all");
+  const { address } = useAccount();
 
   const renderLeaderboard = useCallback(
     (data: LeaderboardResponse) => {
@@ -27,6 +29,7 @@ function ListSection() {
             upvotes={leaderboardEntry.upvotes}
             link={leaderboardEntry.link}
             img={leaderboardEntry.screenshot}
+            upvoted={leaderboardEntry.upvoted}
             className={index < data.leaderboard.length - 1 ? "mb-5" : ""}
           />
         ));
@@ -38,7 +41,7 @@ function ListSection() {
 
   return (
     <div className="relative w-full overflow-hidden">
-      <div className="w-4/5 mx-auto mt-20 mb-60">
+      <div className="section mt-20 mb-60">
         <div className="flex justify-end mb-5">
           <MyButton
             className="mr-3 w-36"
@@ -57,7 +60,9 @@ function ListSection() {
         </div>
         <Modal>
           <QueryWrapper<LeaderboardResponse>
-            endpoint={import.meta.env.VITE_API_URI + "/leaderboard"}
+            endpoint={
+              import.meta.env.VITE_API_URI + "/leaderboard?user=" + address
+            }
             queryKey="leaderboard"
             render={renderLeaderboard}
             errorLabel="Error while fetching leaderboard"

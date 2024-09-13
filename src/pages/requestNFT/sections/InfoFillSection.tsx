@@ -1,6 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { getCountryDataList } from "countries-list";
 import { useCallback, useMemo, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useAccount } from "wagmi";
@@ -14,7 +15,6 @@ import Modal from "../../../components/modals/Modal";
 import MyLoader from "../../../components/MyLoader";
 import RadioGroup from "../../../components/radio/RadioGroup";
 import { RegisterUserResponse } from "../../../models/API/register";
-
 interface SubmitData {
   name: string;
   surname: string;
@@ -34,6 +34,13 @@ const schema = yup
     age: yup.string().required(),
   })
   .required();
+
+const countriesList = getCountryDataList().map((country) => {
+  return {
+    label: country.name,
+    value: country.name,
+  };
+});
 
 function InfoFillSection() {
   const { handleSubmit, control } = useForm({
@@ -60,10 +67,8 @@ function InfoFillSection() {
             address: address,
             email: submitData?.email,
             answers: [
-              submitData?.name,
-              submitData?.surname,
+              `${submitData?.name} ${submitData?.surname}, ${submitData?.nationality}`,
               submitData?.sgu,
-              submitData?.nationality,
               submitData?.age,
             ],
           })
@@ -184,11 +189,7 @@ function InfoFillSection() {
                   return (
                     <MySelectField
                       label="NATIONALITY"
-                      options={[
-                        { label: "USA", value: "usa" },
-                        { label: "Canada", value: "canada" },
-                        { label: "Italy", value: "italy" },
-                      ]}
+                      options={countriesList}
                       className="w-1/3"
                       required
                       {...rest}
@@ -278,7 +279,7 @@ function InfoFillSection() {
 
   return (
     <div className="relative h-screen-no-navbar-desktop w-full flex justify-center items-center overflow-hidden">
-      <Modal className="!w-4/5">
+      <Modal className="section !w-4/5">
         {/* <p>isSuccess: {isSuccess ? "true" : "false"}</p>
         <p>data err: {data?.error ? "true" : "false"}</p> */}
         {renderModalContent}

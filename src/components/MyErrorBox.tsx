@@ -19,7 +19,7 @@ function MyErrorBox({
 }: MyErrorBoxProps) {
   return (
     <div className={`block text-center ${rootClassName}`}>
-      <p className={`font-medium text-black text-lg ${textClassName}`}>
+      <p className={`font-medium text-white text-lg ${textClassName}`}>
         {label}
       </p>
       <MyButton onClick={onButtonClick} className={`mt-3 ${buttonClassName}`}>
