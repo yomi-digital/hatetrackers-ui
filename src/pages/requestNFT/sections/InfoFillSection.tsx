@@ -6,6 +6,7 @@ import { useCallback, useMemo, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useAccount } from "wagmi";
 import * as yup from "yup";
+import BgImage from "../../../assets/images/pictures/bg_horizontal.jpg";
 import RadialRedImg from "../../../assets/images/pictures/radial_gradient_red.svg";
 import RadialWhiteImg from "../../../assets/images/pictures/radial_gradient_white.svg";
 import MyButton from "../../../components/buttons/MyButton";
@@ -279,6 +280,10 @@ function InfoFillSection() {
 
   return (
     <div className="relative h-screen-no-navbar-desktop w-full flex justify-center items-center overflow-hidden">
+      <img
+        className="-z-10 absolute top-0 bottom-0 left-0 right-0"
+        src={BgImage}
+      />
       <Modal className="section !w-4/5">
         {/* <p>isSuccess: {isSuccess ? "true" : "false"}</p>
         <p>data err: {data?.error ? "true" : "false"}</p> */}

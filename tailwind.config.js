@@ -21,6 +21,9 @@ export default {
         "screen-no-navbar-desktop": ["calc(100vh - 10vh)"],
         "adaptive-screen": ["100vh"],
       },
+      minHeight: {
+        "screen-no-navbar-desktop": ["90vh"],
+      },
       colors: {
         black: "#000",
         "black-100": "#1D1D1D",

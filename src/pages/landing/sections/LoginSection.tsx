@@ -5,8 +5,7 @@ import { useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAccount } from "wagmi";
 import LogoLongImg from "../../../assets/images/logo_long.svg";
-import RadialRedImg from "../../../assets/images/pictures/radial_gradient_red.svg";
-import RadialWhiteImg from "../../../assets/images/pictures/radial_gradient_white.svg";
+import BgImage from "../../../assets/images/pictures/bg_horizontal.jpg";
 import MyButton from "../../../components/buttons/MyButton";
 import MyErrorBox from "../../../components/MyErrorBox";
 import MyLoader from "../../../components/MyLoader";
@@ -78,6 +77,10 @@ function LoginSection() {
 
   return (
     <div className="relative h-screen w-full flex justify-center items-center overflow-hidden">
+      <img
+        className="-z-10 absolute top-0 bottom-0 left-0 right-0"
+        src={BgImage}
+      />
       <div>
         <img src={LogoLongImg} alt="Hate Trackers" />
 
@@ -90,16 +93,9 @@ function LoginSection() {
           </MyButton>
         )} */}
       </div>
-      <img
-        className="-z-10 absolute -bottom-1/3 -right-1/3 w-[70rem] max-w-[70rem] h-[70rem] max-h-[70rem] object-contain scale-150"
-        src={RadialRedImg}
-        alt="Radial Gradient"
-      />
-      <img
-        className="-z-10 absolute -top-1/3 -left-1/3 w-[70rem] max-w-[70rem] h-[70rem] max-h-[70rem] object-contain scale-110"
-        src={RadialWhiteImg}
-        alt="Radial Gradient"
-      />
+
+      {/* <div className="-z-10 absolute -bottom-1/2 -right-1/3 w-full aspect-square bg-gradient-radial from-primary/80 from-20% to-transparent to-70%" />
+      <div className="-z-10 absolute w-1/2 left-32 aspect-square bg-gradient-radial from-white/30 to-transparent to-70%" /> */}
     </div>
   );
 }

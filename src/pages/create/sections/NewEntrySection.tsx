@@ -5,8 +5,7 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useAccount, useSignMessage } from "wagmi";
 import * as yup from "yup";
-import RadialRedImg from "../../../assets/images/pictures/radial_gradient_red.svg";
-import RadialWhiteImg from "../../../assets/images/pictures/radial_gradient_white.svg";
+import BgImage from "../../../assets/images/pictures/bg_horizontal.jpg";
 import MyButton from "../../../components/buttons/MyButton";
 import MyFileField from "../../../components/input/MyFileField";
 import MyInputField from "../../../components/input/MyInputField";
@@ -170,6 +169,10 @@ function NewEntrySection() {
 
   return (
     <div className="relative h-screen-no-navbar-desktop w-full flex justify-center items-center overflow-hidden">
+      <img
+        className="-z-10 absolute top-0 bottom-0 left-0 right-0"
+        src={BgImage}
+      />
       <Modal className="section !w-4/5">
         <h1>
           <span className="red-line">CREATE</span> A NEW ENTRY
@@ -193,16 +196,6 @@ function NewEntrySection() {
           />
         </Overlay>
       )}
-      <img
-        className="-z-10 absolute -bottom-3/4 -right-3/4 w-[70rem] max-w-[70rem] h-[70rem] max-h-[70rem] object-contain scale-150"
-        src={RadialRedImg}
-        alt="Radial Gradient"
-      />
-      <img
-        className="-z-10 absolute -bottom-1/3 -right-1/5 w-[70rem] max-w-[70rem] h-[70rem] max-h-[70rem] object-contain scale-110"
-        src={RadialWhiteImg}
-        alt="Radial Gradient"
-      />
     </div>
   );
 }
