@@ -1,4 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import CanInteractRoute from "./components/routing/CanInteractRoute";
+import ConnectedRoute from "./components/routing/ConnectedRoute";
+import NoAuthRoute from "./components/routing/NoAuthRoute";
 import Create from "./pages/create/Create";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Landing from "./pages/landing/Landing";
@@ -7,19 +10,35 @@ import RequestNFT from "./pages/requestNFT/RequestNFT";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Landing />,
+    element: (
+      <NoAuthRoute>
+        <Landing />
+      </NoAuthRoute>
+    ),
   },
   {
     path: "/new-user",
-    element: <RequestNFT />,
+    element: (
+      <ConnectedRoute>
+        <RequestNFT />
+      </ConnectedRoute>
+    ),
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <CanInteractRoute>
+        <Dashboard />
+      </CanInteractRoute>
+    ),
   },
   {
     path: "/create",
-    element: <Create />,
+    element: (
+      <CanInteractRoute>
+        <Create />
+      </CanInteractRoute>
+    ),
   },
 ]);
 

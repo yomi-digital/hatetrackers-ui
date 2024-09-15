@@ -65,7 +65,7 @@ function ListSection() {
   return (
     <div className="relative w-full overflow-hidden min-h-screen-no-navbar-desktop">
       <img
-        className="-z-10 absolute top-0 bottom-0 left-0 right-0 object-cover"
+        className="-z-10 absolute top-0 h-full left-0 w-full object-cover"
         src={BgImage}
       />
       <QueryWrapper<LeaderboardResponse>

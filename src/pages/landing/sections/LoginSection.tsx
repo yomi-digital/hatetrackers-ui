@@ -1,44 +1,28 @@
-import { useQuery } from "@tanstack/react-query";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
-import axios from "axios";
-import { useEffect, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useMemo } from "react";
 import { useAccount } from "wagmi";
 import LogoLongImg from "../../../assets/images/logo_long.svg";
 import BgImage from "../../../assets/images/pictures/bg_horizontal.jpg";
 import MyButton from "../../../components/buttons/MyButton";
 import MyErrorBox from "../../../components/MyErrorBox";
 import MyLoader from "../../../components/MyLoader";
-import { CheckUserResponse } from "../../../models/API/check";
+import { useUser } from "../../../contexts/userContext/UseUser";
 function LoginSection() {
   const { open } = useWeb3Modal();
-  const { isConnecting, address } = useAccount();
-  const navigate = useNavigate();
-  const { isSuccess, isError, isPending, data, refetch } =
-    useQuery<CheckUserResponse>({
-      queryKey: ["check-user"],
-      queryFn: () =>
-        axios
-          .get(import.meta.env.VITE_API_URI + "/check/" + address)
-          .then((res) => {
-            console.log(res.data);
-            return res.data;
-          }),
-      enabled: address !== undefined,
-    });
+  const { address, isConnecting } = useAccount();
+  const user = useUser();
+  // const navigate = useNavigate();
+  // const location = useLocation();
 
-  useEffect(() => {
-    // if (isConnected) {
-    //   navigate("/dashboard");
-    // }
-    if (isSuccess) {
-      if (data.canInteract) {
-        navigate("/dashboard");
-      } else {
-        navigate("/new-user");
-      }
-    }
-  }, [isSuccess, data, navigate]);
+  // useEffect(() => {
+  //   if (location.pathname == "/" && address) {
+  //     if (user.canInteract) {
+  //       navigate("/dashboard");
+  //     } else {
+  //       navigate("/new-user");
+  //     }
+  //   }
+  // }, [user.canInteract]);
 
   const renderHtml = useMemo(() => {
     if (!address) {
@@ -56,29 +40,24 @@ function LoginSection() {
           />
         );
       }
-    } else if (isPending) {
+    } else if (user.isPending) {
       return (
         <MyLoader
           rootClassName="mx-auto block mt-10"
           label="Checking user..."
         />
       );
-    } else if (isError || data.error) {
-      return (
-        <MyErrorBox
-          onButtonClick={refetch}
-          label="Error while fetching user..."
-        />
-      );
+    } else if (user.isError) {
+      return <MyErrorBox label="Error while fetching user..." />;
     } else {
       return null;
     }
-  }, [isConnecting, isPending, isError, data, address, open, refetch]);
+  }, [address, open, user.isPending, user.isError, isConnecting]);
 
   return (
     <div className="relative h-screen w-full flex justify-center items-center overflow-hidden">
       <img
-        className="-z-10 absolute top-0 bottom-0 left-0 right-0"
+        className="-z-10 absolute top-0 left-0 h-screen w-screen object-cover"
         src={BgImage}
       />
       <div>

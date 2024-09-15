@@ -6,6 +6,7 @@ import { WagmiProvider } from "wagmi";
 import { mainnet, sepolia } from "wagmi/chains";
 import "./App.css";
 import MyRouter from "./MyRouter";
+import { UserProvider } from "./contexts/userContext/UserContextProvider";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URI;
 // Create a client
@@ -16,7 +17,7 @@ const projectId = import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID;
 const metadata = {
   name: "Web3Modal",
   description: "Hate Trackers Web3Modal",
-  url: "https://hatetrackers.yomi.dance", // origin must match your domain & subdomain
+  url: "https://ht.yomi.dance", // origin must match your domain & subdomain
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
@@ -24,7 +25,13 @@ export const config = defaultWagmiConfig({
   chains: [mainnet, sepolia], // required
   projectId, // required
   metadata, // required
-  enableWalletConnect: true, // Optional - true by default
+  auth: {
+    email: false,
+    socials: [],
+    walletFeatures: false,
+    showWallets: false,
+  },
+  enableWalletConnect: false, // Optional - true by default
   enableInjected: true, // Optional - true by default
   enableEIP6963: true, // Optional - true by default
   enableCoinbase: true, // Optional - true by default});
@@ -33,14 +40,17 @@ export const config = defaultWagmiConfig({
 createWeb3Modal({
   wagmiConfig: config,
   projectId,
-  enableAnalytics: true, // Optional - defaults to your Cloud configuration
+  enableAnalytics: false, // Optional - defaults to your Cloud configuration
+  enableSwaps: false,
 });
 
 function App() {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <MyRouter />
+        <UserProvider>
+          <MyRouter />
+        </UserProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

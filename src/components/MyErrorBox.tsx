@@ -6,7 +6,7 @@ interface MyErrorBoxProps {
   rootClassName?: string;
   textClassName?: string;
   buttonClassName?: string;
-  onButtonClick: () => void;
+  onButtonClick?: () => void;
 }
 
 function MyErrorBox({
@@ -22,9 +22,11 @@ function MyErrorBox({
       <p className={`font-medium text-white text-lg ${textClassName}`}>
         {label}
       </p>
-      <MyButton onClick={onButtonClick} className={`mt-3 ${buttonClassName}`}>
-        {buttonLabel}
-      </MyButton>
+      {onButtonClick && (
+        <MyButton onClick={onButtonClick} className={`mt-3 ${buttonClassName}`}>
+          {buttonLabel}
+        </MyButton>
+      )}
     </div>
   );
 }

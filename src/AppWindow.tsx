@@ -12,7 +12,7 @@ function AppWindow({ children }: PropsWithChildren) {
     if (!isConnected && location.pathname !== "/") {
       navigate("/");
     }
-  }, [isConnected, location]);
+  }, [isConnected, location, navigate]);
   return (
     <>
       <ScrollToTop />
