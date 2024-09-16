@@ -1,4 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
+import {
+  QueryObserverResult,
+  RefetchOptions,
+  useQuery,
+} from "@tanstack/react-query";
 import axios from "axios";
 import { ReactNode, useMemo } from "react";
 import MyErrorBox from "./MyErrorBox";
@@ -10,7 +14,12 @@ interface QueryWrapperProps<T> {
   loadingLabel: string;
   errorLabel: string;
   loaderRootClassName?: string;
-  render: (data: T) => ReactNode;
+  render: (
+    data: T,
+    refetch: (
+      options?: RefetchOptions
+    ) => Promise<QueryObserverResult<T, Error>>
+  ) => ReactNode;
 }
 
 function QueryWrapper<T>({
@@ -28,8 +37,8 @@ function QueryWrapper<T>({
 
   const renderedHtml = useMemo(() => {
     if (!data) return null;
-    return render(data);
-  }, [data, render]);
+    return render(data, refetch);
+  }, [data, render, refetch]);
 
   // return (
   //   <MyLoader

@@ -12,7 +12,7 @@ function ListSection() {
   const { address } = useAccount();
 
   const renderLeaderboard = useCallback(
-    (data: LeaderboardResponse) => {
+    (data: LeaderboardResponse, refetch: () => void) => {
       if (!data || data?.leaderboard?.length < 1) return null;
       const leaderboardEntriesHtml = data?.leaderboard
         ?.sort((a, b) => {
@@ -30,6 +30,9 @@ function ListSection() {
             img={leaderboardEntry.screenshot}
             upvoted={leaderboardEntry.upvoted}
             className={index < data.leaderboard.length - 1 ? "mb-5" : ""}
+            onUpvoted={() => {
+              refetch();
+            }}
           />
         ));
 

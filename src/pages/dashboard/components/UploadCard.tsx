@@ -14,6 +14,7 @@ interface UploadCardProps {
   upvotes: number;
   upvoted?: boolean;
   className?: string;
+  onUpvoted?: () => void;
 }
 
 function UploadCard({
@@ -25,6 +26,7 @@ function UploadCard({
   upvotes,
   upvoted,
   className = "",
+  onUpvoted,
 }: UploadCardProps) {
   const { address } = useAccount();
   const [, setUpvoteStatus] = useState<"idle" | "loading" | "done" | "error">(
@@ -53,9 +55,11 @@ function UploadCard({
         if (!res.data.error) {
           setUpvoteStatus("done");
           setUpvoteOverwrite(true);
+          if (onUpvoted) onUpvoted();
         } else if (res.data.message === "Downvoted correctly") {
           setUpvoteStatus("done");
           setUpvoteOverwrite(false);
+          if (onUpvoted) onUpvoted();
         } else {
           console.error(res.data.message);
           setUpvoteStatus("error");
@@ -65,7 +69,7 @@ function UploadCard({
         setUpvoteStatus("error");
       }
     },
-    [address, signMessageAsync]
+    [address, signMessageAsync, onUpvoted]
   );
 
   const trimmedAuthor = useMemo(() => {
