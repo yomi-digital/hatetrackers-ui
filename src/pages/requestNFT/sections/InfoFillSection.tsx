@@ -2,13 +2,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { getCountryDataList } from "countries-list";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { useAccount } from "wagmi";
 import * as yup from "yup";
 import BgImage from "../../../assets/images/pictures/bg_horizontal.jpg";
-import RadialRedImg from "../../../assets/images/pictures/radial_gradient_red.svg";
-import RadialWhiteImg from "../../../assets/images/pictures/radial_gradient_white.svg";
 import MyButton from "../../../components/buttons/MyButton";
 import MyInputField from "../../../components/input/MyInputField";
 import MySelectField from "../../../components/input/MySelectField";
@@ -57,6 +56,7 @@ function InfoFillSection() {
   });
 
   const { address } = useAccount();
+  const navigate = useNavigate();
   const [submitData, setSubmitData] = useState<SubmitData>();
   const { isSuccess, isError, isPending, data, isRefetching } =
     useQuery<RegisterUserResponse>({
@@ -79,6 +79,12 @@ function InfoFillSection() {
       refetchOnWindowFocus: false,
       refetchOnMount: false,
     });
+
+  useEffect(() => {
+    if (isSuccess && !data.error) {
+      navigate("/pending-application");
+    }
+  }, [isSuccess]);
 
   const onSubmit = useCallback((data: SubmitData) => {
     console.log(data);
@@ -289,16 +295,6 @@ function InfoFillSection() {
         <p>data err: {data?.error ? "true" : "false"}</p> */}
         {renderModalContent}
       </Modal>
-      <img
-        className="-z-10 absolute -bottom-3/4 -right-3/4 w-[70rem] max-w-[70rem] h-[70rem] max-h-[70rem] object-contain scale-150"
-        src={RadialRedImg}
-        alt="Radial Gradient"
-      />
-      <img
-        className="-z-10 absolute -bottom-1/3 -right-1/5 w-[70rem] max-w-[70rem] h-[70rem] max-h-[70rem] object-contain scale-110"
-        src={RadialWhiteImg}
-        alt="Radial Gradient"
-      />
     </div>
   );
 }

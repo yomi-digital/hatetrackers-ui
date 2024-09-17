@@ -5,6 +5,7 @@ import NoAuthRoute from "./components/routing/NoAuthRoute";
 import Create from "./pages/create/Create";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Landing from "./pages/landing/Landing";
+import NFTPending from "./pages/NFTPending/NFTPending";
 import RequestNFT from "./pages/requestNFT/RequestNFT";
 
 const router = createBrowserRouter([
@@ -21,6 +22,14 @@ const router = createBrowserRouter([
     element: (
       <ConnectedRoute>
         <RequestNFT />
+      </ConnectedRoute>
+    ),
+  },
+  {
+    path: "/pending-application",
+    element: (
+      <ConnectedRoute>
+        <NFTPending />
       </ConnectedRoute>
     ),
   },

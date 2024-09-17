@@ -10,7 +10,11 @@ const NoAuthRoute = ({ children }: { children: JSX.Element }) => {
     if (user.canInteract) {
       return <Navigate to="/dashboard" replace />;
     } else if (user.canInteract !== undefined && !user.canInteract) {
-      return <Navigate to="/new-user" replace />;
+      if (user.applicationStatus === "pending") {
+        return <Navigate to="/pending-application" replace />;
+      } else if (user.applicationStatus === "not_applied") {
+        return <Navigate to="/new-user" replace />;
+      }
     }
   }
 

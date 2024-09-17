@@ -40,19 +40,27 @@ function LoginSection() {
           />
         );
       }
-    } else if (user.isPending) {
+    } else if (user.isUserFetchPending || user.isApplicationFetchPending) {
       return (
         <MyLoader
           rootClassName="mx-auto block mt-10"
           label="Checking user..."
         />
       );
-    } else if (user.isError) {
+    } else if (user.isUserFetchError || user.isApplicationFetchError) {
       return <MyErrorBox label="Error while fetching user..." />;
     } else {
       return null;
     }
-  }, [address, open, user.isPending, user.isError, isConnecting]);
+  }, [
+    address,
+    open,
+    user.isUserFetchPending,
+    user.isUserFetchError,
+    user.isApplicationFetchPending,
+    user.isApplicationFetchError,
+    isConnecting,
+  ]);
 
   return (
     <div className="relative h-screen w-full flex justify-center items-center overflow-hidden">
