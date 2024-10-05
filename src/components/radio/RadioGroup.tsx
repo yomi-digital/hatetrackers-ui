@@ -13,6 +13,7 @@ export interface RadioGroupProps {
   label?: string;
   required?: boolean;
   className?: string;
+  rootClassName?: string;
 }
 
 function RadioGroup({
@@ -23,9 +24,10 @@ function RadioGroup({
   direction = "horizontal",
   label,
   className = "",
+  rootClassName = "",
 }: RadioGroupProps) {
   return (
-    <div>
+    <div className={rootClassName}>
       {label && (
         <label className="block text-xs font-bold text-black-600 mb-2 pl-2">
           {label}

@@ -7,7 +7,7 @@ interface ModalProps {
 function Modal({ className, children }: PropsWithChildren<ModalProps>) {
   return (
     <div
-      className={`relative w-full mx-auto p-8 bg-black-200 rounded-lg ${className}`}
+      className={`relative w-full mx-auto p-3 3xs:p-5 2xs:p-8 bg-black-200 rounded-lg ${className}`}
     >
       {children}
     </div>

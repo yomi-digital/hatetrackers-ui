@@ -38,7 +38,7 @@ function ListSection() {
 
       return (
         <>
-          <div className="section mt-20 mb-60">
+          <div className="section mt-10 xs:mt-20 mb-60">
             <div className="flex justify-end mb-5">
               <MyButton
                 className="mr-3 w-36"

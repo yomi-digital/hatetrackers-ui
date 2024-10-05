@@ -145,9 +145,9 @@ function ImageUploadModal({
   const renderFooter = useMemo(() => {
     if (uploadStatus === "done") {
       return (
-        <div className="flex justify-end gap-4 mt-8 px-8 py-4 bg-black-300 rounded-b-lg">
+        <div className="flex justify-center xs:justify-end mt-8 px-2 2xs:px-4 xs:px-8 py-4 bg-black-300 rounded-b-lg">
           <MyButton
-            className="w-32"
+            className="w-24 2xs:w-32"
             onClick={() => {
               if (onCloseClick) onCloseClick();
             }}
@@ -158,10 +158,10 @@ function ImageUploadModal({
       );
     } else {
       return (
-        <div className="flex justify-end gap-4 mt-8 px-8 py-4 bg-black-300 rounded-b-lg">
+        <div className="flex justify-center xs:justify-end gap-2 2xs:gap-4 mt-8 px-2 2xs:px-4 xs:px-8 py-4 bg-black-300 rounded-b-lg">
           <MyButton
             disabled={uploadStatus === "loading"}
-            className="w-32"
+            className="w-24 2xs:w-32"
             buttonStyle="tertiary"
             onClick={onCancelClick}
           >
@@ -172,7 +172,7 @@ function ImageUploadModal({
               uploadMedia();
             }}
             disabled={uploadStatus === "loading"}
-            className="w-32"
+            className="w-24 2xs:w-32"
           >
             Upload
           </MyButton>
@@ -182,15 +182,15 @@ function ImageUploadModal({
   }, [uploadStatus, onCloseClick, onCancelClick, uploadMedia]);
 
   return (
-    <Modal className={`!bg-black-100 px-0 pb-0 ${className}`}>
+    <Modal className={`!bg-black-100 !px-0 !pb-0 ${className}`}>
       <h2>Upload an image</h2>
-      <p className="font-normal text-sm text-center mt-4 mb-4 text-black-600">
+      <p className="font-normal text-sm text-center mt-4 mb-4 px-2 text-black-600">
         Choose a photo from your gallery to show the origin thread
       </p>
-      <div className="px-16">
+      <div className="px-4 2xs:px-8 xs:px-16">
         <div
           {...getRootProps()}
-          className="px-10 py-14 border border-dashed border-black-500 rounded-[10px]"
+          className="px-2 3xs:px-4 2xs:px-6 xs:px-10 py-2 3xs:py-4 2xs:py-10 xs:py-14 border border-dashed border-black-500 rounded-[10px]"
         >
           <input {...getInputProps()} />
           {renderModalContent}

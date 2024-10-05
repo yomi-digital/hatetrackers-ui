@@ -98,12 +98,12 @@ function InfoFillSection() {
           <h1>
             YOU <span className="red-line">DON'T</span> HAVE ANY NFT
           </h1>
-          <p className="mt-2 w-2/3">
+          <p className="mt-2 xs:w-2/3">
             Fill out the form, once validated you can view the leaderboard and
             interact with other users
           </p>
           <form className="mt-8" onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex gap-2">
+            <div className="flex max-xs:flex-wrap xs:gap-2">
               <Controller
                 render={({ field }) => {
                   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -113,7 +113,7 @@ function InfoFillSection() {
                     <MyInputField
                       label="NAME"
                       placeholder="John"
-                      className="w-1/2"
+                      className="w-full xs:w-1/2"
                       // error={errors.name?.message}
                       required
                       {...rest}
@@ -133,7 +133,7 @@ function InfoFillSection() {
                     <MyInputField
                       label="SURNAME"
                       placeholder="Doe"
-                      className="w-1/2"
+                      className="w-full xs:w-1/2 max-xs:mt-6"
                       // error={errors.surname?.message}
                       required
                       {...rest}
@@ -166,7 +166,7 @@ function InfoFillSection() {
               control={control}
               defaultValue={""}
             />
-            <div className="flex gap-2 mt-6">
+            <div className="flex max-xs:flex-wrap xs:gap-2 mt-6">
               <Controller
                 render={({ field }) => {
                   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -176,7 +176,7 @@ function InfoFillSection() {
                     <MyInputField
                       label="SGU"
                       placeholder="SGU"
-                      className="w-1/3"
+                      className="w-full xs:w-1/3"
                       // error={errors.sgu?.message}
                       required
                       {...rest}
@@ -197,7 +197,7 @@ function InfoFillSection() {
                     <MySelectField
                       label="NATIONALITY"
                       options={countriesList}
-                      className="w-1/3"
+                      className="w-full xs:w-1/3 max-xs:mt-6"
                       required
                       {...rest}
                     />
@@ -214,6 +214,7 @@ function InfoFillSection() {
 
                   return (
                     <RadioGroup
+                      rootClassName="max-xs:w-full max-xs:mt-6"
                       className="pt-2"
                       label="AGE RANGE"
                       options={[
@@ -231,7 +232,9 @@ function InfoFillSection() {
               />
             </div>
             <div className="mt-8">
-              <MyButton className="w-40">Send</MyButton>
+              <MyButton className="w-28 2xs:w-40 max-xs:block max-xs:mx-auto">
+                Send
+              </MyButton>
             </div>
           </form>
         </>
@@ -248,10 +251,10 @@ function InfoFillSection() {
     } else if (isSuccess && !data.error) {
       return (
         <>
-          <h1>
+          <h1 className="max-3xs:text-xl max-2xs:text-2xl">
             APPLICATION <span className="red-line">SENT</span> SUCCESSFULLY
           </h1>
-          <p className="mt-2 w-2/3">
+          <p className="mt-2 w-full xs:w-2/3">
             Please, wait while we validate your application and come back later.
           </p>
         </>
@@ -262,7 +265,7 @@ function InfoFillSection() {
           <h1>
             SOMETHING WENT <span className="red-line">WRONG</span>
           </h1>
-          <p className="mt-2 w-2/3">
+          <p className="mt-2 w-full xs:w-2/3">
             {data?.error
               ? data.message
               : "An error occurred while sending the application"}
@@ -270,7 +273,7 @@ function InfoFillSection() {
         </>
       );
     } else {
-      return <p>ciaociao</p>;
+      return <></>;
     }
   }, [
     submitData,
@@ -285,7 +288,7 @@ function InfoFillSection() {
   ]);
 
   return (
-    <div className="relative h-screen-no-navbar-desktop w-full flex justify-center items-center overflow-hidden">
+    <div className="relative max-xs:py-8 max-xs:min-h-screen-no-navbar-desktop xs:h-screen-no-navbar-desktop w-full flex justify-center items-center overflow-hidden">
       <img
         className="-z-10 absolute top-0 h-full left-0 w-full object-cover"
         src={BgImage}

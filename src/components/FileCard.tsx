@@ -21,7 +21,7 @@ function FileCard({
 
   return (
     <div
-      className={`flex p-6 bg-black-300 rounded-lg gap-5 shadow-xl ${className}`}
+      className={`flex p-2 2xs:p-4 xs:p-6 bg-black-300 rounded-lg gap-2 2xs:gap-3 xs:gap-5 shadow-xl ${className}`}
     >
       <img src={FileImg} alt="File" />
       <div className="font-medium">{trimmedName}</div>

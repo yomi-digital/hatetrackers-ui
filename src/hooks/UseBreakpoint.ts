@@ -9,7 +9,7 @@ const breakpoints = fullConfig.theme?.screens;
 
 // type BreakpointKey = keyof typeof breakpoints;
 
-type ScreenSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+type ScreenSize = "3xs" | "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
 export function useBreakpoint(breakpointKey: ScreenSize) {
   const bool = useMediaQuery({

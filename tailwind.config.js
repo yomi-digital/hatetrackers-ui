@@ -4,8 +4,9 @@ export default {
   theme: {
     extend: {
       screens: {
-        "2xs": "290px",
-        xs: "350px",
+        "3xs": "290px",
+        "2xs": "350px",
+        xs: "550px",
         "3xl": "2000px",
       },
       maxWidth: {

@@ -69,7 +69,11 @@ function LoginSection() {
         src={BgImage}
       />
       <div>
-        <img src={LogoLongImg} alt="Hate Trackers" />
+        <img
+          src={LogoLongImg}
+          alt="Hate Trackers"
+          className="max-2xs:w-3/4 max-2xs:mx-auto"
+        />
 
         {renderHtml}
         {/* {isConnecting ? (

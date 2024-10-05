@@ -88,11 +88,11 @@ function UploadCard({
 
   return (
     <div className={`bg-black-400 rounded-[9px] ${className}`}>
-      <div className="flex justify-between px-6 py-4 border-b border-black-200">
+      <div className="flex flex-col xs:flex-row justify-between px-4 3xs:px-6 py-4 border-b border-black-200">
         <div className="font-bold">{trimmedAuthor}</div>
         <div className="text-black-500">{date}</div>
       </div>
-      <div className="flex flex-col px-6 py-4 items-start">
+      <div className="flex flex-col px-4 3xs:px-6 py-4 items-start">
         <Link
           to={link}
           target="_blank"

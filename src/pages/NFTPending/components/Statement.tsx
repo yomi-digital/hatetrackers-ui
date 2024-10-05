@@ -14,9 +14,9 @@ function Statement({ img, name, role, body, className = "" }: StatementProps) {
       <img
         src={img}
         alt={name}
-        className="w-48 xs:w-60 md:w-80 h-48 xs:h-60 md:h-80 rounded-3xl object-cover border-2 border-primary-200"
+        className="w-48 2xs:w-60 md:w-80 h-48 2xs:h-60 md:h-80 rounded-3xl object-cover border-2 border-primary-200"
       />
-      <div className="flex flex-col justify-center text-sm xs:text-base md:pl-16 max-md:mt-10">
+      <div className="flex flex-col justify-center text-sm 2xs:text-base md:pl-16 max-md:mt-10">
         <p className="font-ibmplexmono mb-4 text-primary">“{body}”</p>
         <p className="font-medium text-primary">
           {name}, <span className="font-semibold">{role}</span>

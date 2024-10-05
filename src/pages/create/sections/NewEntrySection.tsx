@@ -84,7 +84,6 @@ function NewEntrySection() {
     link: string;
     img: string;
   }> = (data) => {
-    console.log(data);
     sendComment(data.link, `${import.meta.env.VITE_IPFS_URL}${data.img}`);
   };
 
@@ -94,7 +93,7 @@ function NewEntrySection() {
     if (uploadCommentStatus === "idle") {
       return (
         <form
-          className="mt-8 bg-black-300 p-5 rounded-[9px]"
+          className="mt-8 bg-black-300 p-3 2xs:p-5 rounded-[9px]"
           onSubmit={handleSubmit(onSubmit)}
         >
           <Controller
@@ -135,7 +134,9 @@ function NewEntrySection() {
             </div>
           )}
           <div className="mt-8">
-            <MyButton className="w-40">Confirm</MyButton>
+            <MyButton className="w-40 max-xs:mx-auto max-xs:block">
+              Confirm
+            </MyButton>
           </div>
         </form>
       );
@@ -147,7 +148,7 @@ function NewEntrySection() {
       );
     } else if (uploadCommentStatus === "done") {
       return (
-        <div className="mt-14 flex flex-col justify-center items-center">
+        <div className="mt-8 2xs:mt-14 flex flex-col justify-center items-center">
           <p className="text-white font-semibold text-center">
             Upload successful!
           </p>
@@ -168,16 +169,16 @@ function NewEntrySection() {
   ]);
 
   return (
-    <div className="relative h-screen-no-navbar-desktop w-full flex justify-center items-center overflow-hidden">
+    <div className="relative max-xs:min-h-screen-no-navbar-desktop xs:h-screen-no-navbar-desktop w-full flex justify-center items-center overflow-hidden">
       <img
         className="-z-10 absolute top-0 h-full left-0 w-full object-cover"
         src={BgImage}
       />
-      <Modal className="section !w-4/5">
+      <Modal className="section !w-[90%] xs:!w-4/5">
         <h1>
           <span className="red-line">CREATE</span> A NEW ENTRY
         </h1>
-        <p className="mt-2 w-2/3">
+        <p className="mt-2 w-full xs:w-2/3">
           Add a youtube link below and a proper handle to create a new entry.
         </p>
         {renderModalContent}

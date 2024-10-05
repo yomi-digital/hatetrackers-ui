@@ -38,7 +38,7 @@ body {
   }
 
   .section {
-    @apply w-4/5 lg:max-w-4xl lg:mx-auto;
+    @apply w-4/5 lg:max-w-4xl mx-auto;
   }
 
   .section-bg {
@@ -46,7 +46,7 @@ body {
   }
 
   .hero-second-section {
-    @apply mt-10 xs:mt-20 sm:mt-32 md:mt-40 lg:max-w-7xl lg:mx-auto;
+    @apply mt-10 2xs:mt-20 sm:mt-32 md:mt-40 lg:max-w-7xl lg:mx-auto;
   }
   /* a {
     @apply hover:underline;
@@ -58,7 +58,7 @@ body {
 
   /* buttons */
   .my-button {
-    @apply transition-colors disabled:opacity-25 disabled:cursor-not-allowed rounded-full px-6 py-3;
+    @apply transition-colors disabled:opacity-25 disabled:cursor-not-allowed rounded-full px-3 2xs:px-6 py-3;
   }
   .my-button.medium {
     @apply text-base 3xl:text-lg;

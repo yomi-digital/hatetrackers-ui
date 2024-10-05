@@ -8,11 +8,11 @@ function PendingSection() {
         className="-z-10 absolute top-0 h-full left-0 w-full object-cover"
         src={BgImage}
       />
-      <Modal className="section !w-4/5">
+      <Modal className="section !w-[90%] 2xs:!w-4/5 max-xs:-mt-20">
         <h1>
           APPLICATION <span className="red-line">PENDING</span>
         </h1>
-        <p className="mt-2 w-2/3">
+        <p className="mt-2 w-full xs:w-2/3">
           We are validating your application, refresh to check when everything
           is ready.
         </p>
