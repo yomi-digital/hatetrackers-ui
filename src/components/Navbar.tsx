@@ -2,7 +2,8 @@ import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useAccount } from "wagmi";
-import LogoLongImg from "../assets/images/logo_long.svg";
+import LogoLongImg from "../assets/images/logo_longNew.svg";
+import LogoEULongImg from "../assets/images/logoEU_long.svg";
 import { useBreakpoint } from "../hooks/UseBreakpoint";
 import MyButton from "./buttons/MyButton";
 
@@ -39,6 +40,11 @@ NavbarProps) {
                 <img
                   src={LogoLongImg}
                   alt="Hate Trackers logo"
+                  className="h-full max-w-full object-contain"
+                />
+                <img
+                  src={LogoEULongImg}
+                  alt="EU logo"
                   className="h-full max-w-full object-contain"
                 />
               </Link>
